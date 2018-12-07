@@ -1,0 +1,41 @@
+@import './mixins/mixins.scss';
+
+@include b(cart) {
+  height: 3.6rem;
+  width: 3.6rem;
+  border-radius: 50%;
+  position: fixed;
+  left: .3rem;
+  bottom: .3rem;
+  z-index: 501;
+
+  transition: transform .5s linear;
+  &:active {
+    transform: translateX(1.25rem) scale(1.1);
+  }
+
+  @include e(img) {
+    height: 100%;
+    width: 100%;
+    background: url('https://static.34580.cn/cn/min/activity/coupon/cart.png') no-repeat center center;
+    background-size: 50% 50%;
+  }
+
+  @include e(count) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 1.15rem;
+    width: 1.15rem;
+    background: red;
+    border-radius: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    color: #fff;
+    padding: .1rem;
+    box-sizing: border-box;
+  }
+}

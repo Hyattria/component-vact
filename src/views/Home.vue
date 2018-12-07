@@ -13,6 +13,10 @@ export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  created () {
+    this.$message().show()
+    this.$confirm().show()
   }
 }
 </script>

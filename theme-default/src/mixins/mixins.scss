@@ -1,0 +1,153 @@
+/*
+ * @Author: summer
+ * @Date: 2018-07-29 08:45:47
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2018-07-30 14:24:53
+ */
+
+@import './function.scss';
+@import '../common/var.scss';
+ /* BEM
+ -------------------------- */
+
+ /*
+  --- ac-*** ----
+*/
+@mixin b($block) {
+  $B: $namespace+'-'+$block !global;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+/*
+  --- is-*** ----
+*/
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
+
+/*
+  --- ac-**--***   *** ----
+*/
+@mixin m($modifier) {
+  $selector: &;
+  $currentSelector: "";
+
+  $currentSelector: #{& + $modifier-separator + $modifier};
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+/*
+  --- ac-**__***   *** ----
+*/
+@mixin e($element) {
+  $selector: &;
+  $currentSelector: "";
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit + ","};
+  }
+
+  @if hitAllSpecialNestRule($selector) {
+    @at-root {
+      #{$selector} {
+        #{$currentSelector} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+}
+
+
+/* Scrollbar
+ -------------------------- */
+ @mixin scroll-bar {
+  $--scrollbar-thumb-background: #b4bccc;
+  $--scrollbar-track-background: #fff;
+
+  &::-webkit-scrollbar {
+    z-index: 11;
+    width: 6px;
+
+    &:horizontal {
+      height: 6px;
+    }
+
+    &-thumb {
+      border-radius: 5px;
+      width: 6px;
+      background: $--scrollbar-thumb-background;
+    }
+
+    &-corner {
+      background: $--scrollbar-track-background;
+    }
+
+    &-track {
+      background: $--scrollbar-track-background;
+
+      &-piece {
+        background: $--scrollbar-track-background;
+        width: 6px;
+      }
+    }
+  }
+}
+
+/* Placeholder
+ -------------------------- */
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content
+  }
+
+  &::-moz-placeholder {
+    @content
+  }
+
+  &:-ms-input-placeholder {
+    @content
+  }
+};
+
+/* BEM
+ -------------------------- */
+@mixin b($block) {
+  $B: $namespace+'-'+$block !global;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+
+
+@mixin border($color) {
+  border: 1px solid $color;
+
+  &:hover {
+    border-color: $color
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color;
+  }
+}

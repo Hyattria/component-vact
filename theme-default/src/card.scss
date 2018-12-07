@@ -1,0 +1,37 @@
+@import './mixins/mixins.scss';
+
+@include b(card) {
+  display: flex;
+  flex-direction: row;
+  // flex: 1;
+  flex-basis: auto;
+  box-sizing: border-box;
+  min-width: 0;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 95%;
+  background: $--color-white;
+  margin: 0 auto;
+
+  @include when(vertical) {
+    flex-direction: column;
+  }
+
+  @include e(item) {
+    display: flex;
+    flex-direction: row;
+    // flex: 1;
+    flex-basis: auto;
+    box-sizing: border-box;
+    min-width: 0;
+    margin-top: 2%;
+
+    @include when(vertical) {
+      flex-direction: column;
+    }
+  }
+  @include e(body) {
+    flex: 1;
+    margin-left: 1rem;
+  }
+}

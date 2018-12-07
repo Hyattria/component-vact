@@ -1,0 +1,144 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(message) {
+  width: 98%;
+  box-sizing: border-box;
+  border-radius: $--border-radius-base;
+  border-width: $--border-width-base;
+  border-style: $--border-style-base;
+  border-color: $--border-color-lighter;
+  position: fixed;
+  left: 1%;
+  top: .533333rem;
+  // transform: translateX(-50%);
+  background-color: $--message-background-color;
+  // transition: opacity 0.3s, transform .4s;
+  overflow: hidden;
+  padding: $--message-padding;
+  box-shadow: 0 1px 5px rgba(0,0,0,.2);
+  z-index: 1003;
+  // display: flex;
+  // align-items: center;
+
+  @include when(center) {
+    justify-content: center;
+  }
+
+  @include when(closable) {
+    .ac-message__content {
+      padding-right: 16px;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @include m(info) {
+    .ac-message__content {
+      color: #515a6e;
+    }
+  }
+
+  @include m(success) {
+    background-color: $--color-success-lighter;
+    border-color: $--color-success-light;
+
+    .ac-message__content {
+      color: $--message-success-color;
+    }
+  }
+
+  @include m(warning) {
+    background-color: $--color-warning-lighter;
+    border-color: $--color-warning-light;
+
+    .ac-message__content {
+      color: $--message-warning-color;
+    }
+  }
+
+  @include m(error) {
+    background-color: $--color-danger-lighter;
+    border-color: $--color-danger-light;
+
+    .ac-message__content {
+      color: $--message-danger-color;
+    }
+  }
+
+  @include e(head) {
+    display: flex;
+    align-items: baseline;
+    line-height: 1.8;
+  }
+
+  @include e(icon) {
+    margin-right: 6px;
+    font-size: 1.3rem;
+  }
+
+  @include e(content) {
+    // white-space: nowrap;
+    padding: .1rem 2rem 0 0;
+    font-size: .933333rem;
+    line-height: 1.3;
+    &:focus {
+      outline-width: 0;
+    }
+  }
+
+  @include e(closeBtn) {
+    position: absolute;
+    top: 1.3rem;
+    right: 1rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: $--message-close-color;
+    font-size: $--message-close-size;
+
+    &:focus {
+      outline-width: 0;
+    }
+    &:hover {
+      color: $--message-close-hover-color;
+    }
+  }
+
+  & .ac-icon-success {
+    color: $--message-success-color;
+
+    & + span {
+      color: $--message-success-color;
+    }
+  }
+
+  & .ac-icon-error {
+    color: $--message-danger-color;
+    & + span {
+      color: $--message-danger-color;
+    }
+  }
+
+  & .ac-icon-info {
+    color: $--message-info-color;
+
+    & + span {
+      color: $--message-info-color;
+    }
+  }
+
+  & .ac-icon-warning {
+    color: $--message-warning-color;
+    & + span {
+      color: $--message-warning-color;
+    }
+  }
+}
+
+.ac-message-fade-enter,
+.ac-message-fade-leave-active {
+  opacity: 0;
+  transform: translate(-50%, -100%);
+}

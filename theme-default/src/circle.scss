@@ -1,0 +1,31 @@
+@import './mixins/mixins.scss';
+
+@include b(circle) {
+  display: inline-block;
+  position: relative;
+
+  @include e(content) {
+    height: 4.5rem;
+    width: 4.5rem;
+  }
+
+  @include e(text) {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    transform: translateY(-60%);
+    font-size: .8125rem;
+    color: #606266;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    color: #ff7e00;
+
+    div:nth-child(2) {
+      padding-top: .2rem;
+    }
+  }
+}

@@ -1,0 +1,203 @@
+@import "./mixins/mixins";
+@import "./common/var";
+@import "./input.scss";
+
+@include b(input-number) {
+  position: relative;
+  display: inline-block;
+  width: 12rem;
+  line-height: #{$--input-height - .133333rem};
+
+  .ac-input {
+    display: block;
+
+    &__inner {
+      -webkit-appearance: none;
+      padding-left: #{$--input-height + .666667rem};
+      padding-right: #{$--input-height + .666667rem};
+      text-align: center;
+    }
+  }
+
+  @include e((increase, decrease)) {
+    position: absolute;
+    z-index: 1;
+    top: 1px;
+    width: $--input-height;
+    height: auto;
+    text-align: center;
+    background: $--background-color-base;
+    color: $--color-text-regular;
+    cursor: pointer;
+    font-size: .866667rem;
+
+    &:hover {
+      color: $--color-success;
+
+      &:not(.is-disabled) ~ .ac-input .ac-input__inner:not(.is-disabled) {
+        border-color: $--input-focus-border;
+      }
+    }
+
+    &.is-disabled {
+      color: $--disabled-color-base;
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(increase) {
+    right: 1px;
+    border-radius: 0 $--border-radius-base $--border-radius-base 0;
+    border-left: $--border-base;
+  }
+
+  @include e(decrease) {
+    left: 1px;
+    border-radius: $--border-radius-base 0 0 $--border-radius-base;
+    border-right: $--border-base;
+  }
+
+  @include when(disabled) {
+    @include e((increase, decrease)) {
+      border-color: $--disabled-border-base;
+      color: $--disabled-border-base!important;
+
+      &:hover {
+        color: $--disabled-border-base;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  @include m(medium) {
+    width: 13.333333rem;
+    line-height: #{$--input-medium-height - .133333rem};
+
+    @include e((increase, decrease)) {
+      width: $--input-medium-height;
+      font-size: $--input-medium-font-size;
+    }
+
+    .ac-input__inner {
+      padding-left: #{$--input-medium-height + .466667rem};
+      padding-right: #{$--input-medium-height + .466667rem};
+    }
+  }
+
+  @include m(small) {
+    width: 8.666667rem;
+    line-height: #{$--input-small-height - .133333rem};
+
+    @include e((increase, decrease)) {
+      width: $--input-small-height;
+      font-size: $--input-small-font-size;
+
+      [class*=ac-icon] {
+        transform: scale(.9);
+      }
+    }
+
+    .ac-input__inner {
+      padding-left: #{$--input-small-height + .466667rem};
+      padding-right: #{$--input-small-height + .466667rem};
+    }
+  }
+
+  @include m(mini) {
+    width: 7.666667rem;
+    line-height: #{$--input-mini-height - .133333rem};
+
+    @include e((increase, decrease)) {
+      width: $--input-mini-height;
+      font-size: $--input-mini-font-size;
+
+      [class*=ac-icon] {
+        transform: scale(.8);
+      }
+    }
+
+    .ac-input__inner {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  @include when(round) {
+    width: 5.5rem;
+
+    @include e((increase, decrease)) {
+      width: $--input-mini-height;
+      height: 100%;
+      font-size: $--input-mini-font-size;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      background: none;
+
+      [class*=ac-icon] {
+        transform: scale(1.6);
+        // color: $--color-info;
+      }
+    }
+
+    .ac-input__inner {
+      border: none;
+    }
+  }
+  @include when(without-controls) {
+    .ac-input__inner {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  @include when(controls-right) {
+    .ac-input__inner {
+      padding-left: 15px;
+      padding-right: #{$--input-height + .666667rem};
+    }
+
+    @include e((increase, decrease)) {
+      height: auto;
+      line-height: #{($--input-height - .133333rem) / 2};
+
+      [class*=ac-icon] {
+        transform: scale(.8);
+      }
+    }
+
+    @include e(increase) {
+      border-radius: 0 $--border-radius-base 0 0;
+      border-bottom: $--border-base;
+    }
+
+    @include e(decrease) {
+      right: 1px;
+      bottom: 1px;
+      top: auto;
+      left: auto;
+      border-right: none;
+      border-left: $--border-base;
+      border-radius: 0 0 $--border-radius-base 0;
+    }
+
+    &[class*=medium] {
+      [class*=increase], [class*=decrease] {
+        line-height: #{($--input-medium-height - .133333rem) / 2};
+      }
+    }
+
+    &[class*=small] {
+      [class*=increase], [class*=decrease] {
+        line-height: #{($--input-small-height - .133333rem) / 2};
+      }
+    }
+
+    &[class*=mini] {
+      [class*=increase], [class*=decrease] {
+        line-height: #{($--input-mini-height - .133333rem) / 2};
+      }
+    }
+  }
+}
