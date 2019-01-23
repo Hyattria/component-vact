@@ -44,7 +44,7 @@ export default {
     },
     width: function width() {
       if (this.$parent.$props === 'AcCard') {
-        return this.isVertical && 100 / this.$parent.$props.column - 1 + "%";
+        return this.isVertical && "".concat(100 / this.$parent.$props.column - 1, "%");
       }
     }
   }

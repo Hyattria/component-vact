@@ -1,5 +1,4 @@
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
+import _extends from "@babel/runtime/helpers/esm/extends";
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 var TELPREFIX = [130, 131, 132, 155, 156, 186, 185, 176, 134, 135, 136, 137, 138, 139, 150, 151, 152, 157, 158, 159, 182, 183, 184, 188, 187, 147, 178, 133, 153, 180, 181, 189, 177];
 export default {
@@ -84,11 +83,11 @@ export default {
 
       this.swiperData = seeds.map(function (item) {
         if (item.length !== 4) {
-          item = "0" + item;
+          item = "0".concat(item);
         }
 
         var _pre = TELPREFIX[parseInt(Math.random() * 33)];
-        return _pre + "-xxxx-" + item + " \u9886\u53D6\u4E86" + REWARDS[_this2.getRandomInt(0, REWARDS.length)] + (_this2.name || '');
+        return "".concat(_pre, "-xxxx-").concat(item, " \u9886\u53D6\u4E86").concat(REWARDS[_this2.getRandomInt(0, REWARDS.length)]).concat(_this2.name || '');
       });
     },
     getRandomInt: function getRandomInt(min, max) {

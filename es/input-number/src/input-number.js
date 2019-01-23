@@ -205,12 +205,12 @@ export default {
           var y = -(window.innerHeight - rect.top - 30); // 获取y
 
           el.style.display = '';
-          el.style.webkitTransform = "translateY(" + y + "px)"; // translateY
+          el.style.webkitTransform = "translateY(".concat(y, "px)"); // translateY
 
-          el.style.transform = "translateY(" + y + "px)";
+          el.style.transform = "translateY(".concat(y, "px)");
           var inner = el.getElementsByClassName('inner-hook')[0];
-          inner.style.webkitTransform = "translateX(" + x + "px)";
-          inner.style.transform = "translateX(" + x + "px)";
+          inner.style.webkitTransform = "translateX(".concat(x, "px)");
+          inner.style.transform = "translateX(".concat(x, "px)");
         }
       }
     },

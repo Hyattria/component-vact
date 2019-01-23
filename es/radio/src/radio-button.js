@@ -78,7 +78,7 @@ export default {
       return {
         backgroundColor: this._radioGroup.fill || '',
         borderColor: this._radioGroup.fill || '',
-        boxShadow: this._radioGroup.fill ? "-1px 0 0 0 " + this._radioGroup.fill : '',
+        boxShadow: this._radioGroup.fill ? "-1px 0 0 0 ".concat(this._radioGroup.fill) : '',
         color: this._radioGroup.textColor || ''
       };
     }

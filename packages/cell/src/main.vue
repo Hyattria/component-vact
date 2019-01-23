@@ -1,36 +1,16 @@
 <template>
-  <div 
-      class="ac-cell"
-      @click="click"
-    >
-    <slot name="icon"></slot>
-    <div
-      v-if="title || $slots.title" 
-      class="ac-cell__title">
-      <slot name="title">
-        <span v-text="title"></span>
-        <div 
-          v-if="label"
-          v-text="label"
-          class="ac-cell__label"
-        >
-        </div>
-      </slot>
+  <div :class="[
+        'weui-cell',
+        access ? 'weui-cell_access' : ''
+      ]"
+      @click="click">
+    <div class="weui-cell__hd">
+      <slot name='icon'></slot>
+      <slot name="hd">{{ title }}</slot>
     </div>
-     <div
-      v-if="value || $slots.default"
-      class="ac-cell__value"
-      >
-      <slot>
-        <span v-text="value" />
-      </slot>
+    <div class="weui-cell__bd"><slot name="bd"></slot></div>
+    <div class="weui-cell__ft"><slot name="ft">{{ value }}</slot>
     </div>
-    <slot 
-      v-if="end || isLink"
-      class="ac-cell__end"
-      >
-      <span v-text="end" />
-    </slot>
   </div>
 </template>
 
@@ -38,11 +18,9 @@
 export default {
   name: 'AcCell',
   props: {
+    access: Boolean,
     title: String,
-    label: String,
-    end: String,
-    isLink: Boolean,
-    value: [String, Number]
+    value: String
   },
   methods: {
     click () {

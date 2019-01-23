@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     typeClass: function typeClass() {
-      return this.type && "ac-message__icon ac-icon-" + typeMap[this.type].type;
+      return this.type && "ac-message__icon ac-icon-".concat(typeMap[this.type].type);
     },
     typeInfo: function typeInfo() {
       return this.type && typeMap[this.type].title;

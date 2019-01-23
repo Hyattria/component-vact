@@ -8,13 +8,22 @@ module.exports = function(api) {
     presets: [
       ['@vue/app', 
         {
-          loose: true,
+          loose: false,
           modules: useESModules ? false : 'commonjs',
           useBuiltIns: 'false'
         }
       ]
     ],
     plugins: [
+      [
+        '@babel/plugin-transform-runtime',
+        {
+          corejs: false,
+          helpers: true,
+          regenerator: true,
+          useESModules
+        }
+      ],
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-transform-object-assign'
     ]

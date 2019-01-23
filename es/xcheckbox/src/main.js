@@ -1,3 +1,4 @@
+import _defineProperty from "@babel/runtime/helpers/esm/defineProperty";
 export default {
   render: function render() {
     var _vm = this;
@@ -26,7 +27,8 @@ export default {
         "type": "checkbox"
       },
       domProps: {
-        "checked": Array.isArray(_vm.model) ? _vm._i(_vm.model, null) > -1 : _vm.model
+        "value": _vm.label,
+        "checked": Array.isArray(_vm.model) ? _vm._i(_vm.model, _vm.label) > -1 : _vm.model
       },
       on: {
         "change": function change($event) {
@@ -35,7 +37,7 @@ export default {
               $$c = $$el.checked ? true : false;
 
           if (Array.isArray($$a)) {
-            var $$v = null,
+            var $$v = _vm.label,
                 $$i = _vm._i($$a, $$v);
 
             if ($$el.checked) {
@@ -61,11 +63,12 @@ export default {
         "type": "radio"
       },
       domProps: {
-        "checked": _vm._q(_vm.model, null)
+        "value": _vm.label,
+        "checked": _vm._q(_vm.model, _vm.label)
       },
       on: {
         "change": function change($event) {
-          _vm.model = null;
+          _vm.model = _vm.label;
         }
       }
     }) : _vm.position === 'hd' ? _c('input', {
@@ -80,9 +83,9 @@ export default {
         "name": "checkbox1",
         "type": _vm.type
       },
-      domProps: {
-        "value": _vm.model
-      },
+      domProps: _defineProperty({
+        "value": _vm.label
+      }, "value", _vm.model),
       on: {
         "input": function input($event) {
           if ($event.target.composing) {
@@ -111,7 +114,8 @@ export default {
         "type": "checkbox"
       },
       domProps: {
-        "checked": Array.isArray(_vm.model) ? _vm._i(_vm.model, null) > -1 : _vm.model
+        "value": _vm.label,
+        "checked": Array.isArray(_vm.model) ? _vm._i(_vm.model, _vm.label) > -1 : _vm.model
       },
       on: {
         "change": function change($event) {
@@ -120,7 +124,7 @@ export default {
               $$c = $$el.checked ? true : false;
 
           if (Array.isArray($$a)) {
-            var $$v = null,
+            var $$v = _vm.label,
                 $$i = _vm._i($$a, $$v);
 
             if ($$el.checked) {
@@ -146,11 +150,12 @@ export default {
         "type": "radio"
       },
       domProps: {
-        "checked": _vm._q(_vm.model, null)
+        "value": _vm.label,
+        "checked": _vm._q(_vm.model, _vm.label)
       },
       on: {
         "change": function change($event) {
-          _vm.model = null;
+          _vm.model = _vm.label;
         }
       }
     }) : _vm.position === 'ft' ? _c('input', {
@@ -165,9 +170,9 @@ export default {
         "name": "checkbox1",
         "type": _vm.type
       },
-      domProps: {
-        "value": _vm.model
-      },
+      domProps: _defineProperty({
+        "value": _vm.label
+      }, "value", _vm.model),
       on: {
         "input": function input($event) {
           if ($event.target.composing) {
